@@ -1,0 +1,25 @@
+{
+  "name": "AI-Coding-Assistant",
+  "url": "https://github.com/your-username/ai-coding-assistant",
+  "hook_attributes": {
+    "url": "https://your-app-url.com/api/webhook",
+    "active": true,
+    "secret": "WEBHOOK_SECRET_WILL_BE_GENERATED"
+  },
+  "redirect_url": "https://your-app-url.com/api/github/callback",
+  "public": false,
+  "default_permissions": {
+    "issues": "write",
+    "pull_requests": "write",
+    "contents": "write",
+    "metadata": "read"
+  },
+  "default_events": [
+    "issues",
+    "issue_comment",
+    "pull_request",
+    "pull_request_review",
+    "pull_request_review_comment"
+  ],
+  "description": "AI-powered assistant that automates software development workflow from GitHub issue to implementation."
+}
