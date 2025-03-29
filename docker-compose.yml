@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  ai-coding-assistant:
+    build: .
+    container_name: ai-coding-assistant
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - GITHUB_APP_ID=${GITHUB_APP_ID}
+      - GITHUB_APP_INSTALLATION_ID=${GITHUB_APP_INSTALLATION_ID}
+      - GITHUB_PRIVATE_KEY=${GITHUB_PRIVATE_KEY}
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - PORT=3000
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - ai-network
+
+  # Optional: Add a database service if needed
+  # db:
+  #   image: mongo:latest
+  #   container_name: ai-coding-assistant-db
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./data/db:/data/db
+  #   networks:
+  #     - ai-network
+
+networks:
+  ai-network:
+    driver: bridge
